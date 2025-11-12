@@ -1,4 +1,4 @@
-import { Redirect, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import {
   IonApp,
   IonRouterOutlet,
@@ -16,6 +16,14 @@ import LoginTab from "./pages/loginTab";
 import HomeIcon from "./assets/images/navBar/HomeIconSVG.svg";
 import PerfilIcon from "./assets/images/navBar/PerfilIconSVG.svg";
 import LoginTabCredentials from "./pages/loginTab_2";
+import Login from "./pages/login";
+import Register from "./pages/register";
+import Forgot from "./pages/forgot";
+import Communities from "./pages/communities";
+import CommunitiesEvents from "./pages/communitiesEvents";
+import MyEvents from "./pages/myEvents";
+import Connections from "./pages/connections";
+import Profile from "./pages/profile";
 
 /* Core CSS */
 import "@ionic/react/css/core.css";
@@ -37,32 +45,15 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonRouterOutlet id="main">
         {/* 🔹 Tela de Login fora das Tabs */}
-  <Route exact path="/login" component={LoginTab} />
-  <Route exact path="/login/credentials" component={LoginTabCredentials} />
 
-        {/* 🔹 Tabs */}
-        <Route path="/tabs">
-          <IonTabs>
-            <IonRouterOutlet>
-              <Route exact path="/tabs/homebarTab" component={HomebarTab} />
-              <Route exact path="/tabs/profileTab" component={ProfileTab} />
-              <Redirect exact from="/tabs" to="/tabs/homebarTab" />
-            </IonRouterOutlet>
-
-            <IonTabBar slot="bottom">
-              <IonTabButton tab="tab1" href="/tabs/homebarTab">
-                <IonIcon icon={HomeIcon} />
-              </IonTabButton>
-
-              <IonTabButton tab="tab3" href="/tabs/profileTab">
-                <IonIcon icon={PerfilIcon} />
-              </IonTabButton>
-            </IonTabBar>
-          </IonTabs>
-        </Route>
-
-        {/* 🔹 Redirecionamento inicial */}
-        <Redirect exact from="/" to="/login" />
+        <Route path="/" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/forgot" element={<Forgot />} />
+        <Route path="/communities" element={<Communities />} />
+        <Route path="/community-events" element={<CommunitiesEvents />} />
+        <Route path="/events/my" element={<MyEvents />} />
+        <Route path="/connections" element={<Connections />} />
+        <Route path="/profile" element={<Profile />} />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
